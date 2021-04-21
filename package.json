@@ -1,0 +1,26 @@
+{
+  "name": "nlw5-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "NODE_ENV=test jest -i",
+    "posttest": "rm ./src/database/database.test.sqlite",
+    "dev": "nodemon bin/server.ts",
+    "start": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn bin/server.ts",
+    "typeorm": "ts-node-dev node_modules/typeorm"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^5.0.2",
+    "typeorm": "^0.2.32"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.11",
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^4.2.4"
+  }
+}
