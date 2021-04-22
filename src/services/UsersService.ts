@@ -1,11 +1,11 @@
 import { getCustomRepository } from "typeorm";
 import { UsersRepository } from "../repositories/UsersRepository";
 
-class SettingsService {
+class UsersService {
     async create(email: string) {
         const usersRepository = getCustomRepository(UsersRepository);
 
-        const userAlreadyExists = usersRepository.findOne({
+        const userAlreadyExists = await usersRepository.findOne({
             email
         });
 
@@ -13,14 +13,14 @@ class SettingsService {
             throw new Error("User already exists!");
         }
 
-        const settings = usersRepository.create({
+        const user = usersRepository.create({
             email,
         });
 
-        await usersRepository.save(settings);
+        await usersRepository.save(user);
 
-        return settings;
+        return user;
     }
 }
 
-export { SettingsService }
+export { UsersService }
