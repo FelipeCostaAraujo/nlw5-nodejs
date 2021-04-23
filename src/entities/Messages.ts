@@ -29,3 +29,5 @@ class Message {
         }
     }
 }
+
+export { Message }
