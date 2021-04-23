@@ -9,7 +9,6 @@ class UsersController {
 
         try {
             const user = await userService.create(email);
-
             return response.json(user);
         } catch (exception) {
             return response
