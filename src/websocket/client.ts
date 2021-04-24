@@ -1,4 +1,4 @@
-import { io } from "../../bin/socket";
+import { io } from "../../app/app";
 import { ConnectionsService } from "../services/ConnectionsService";
 import { UsersService } from "../services/UsersService";
 import { MessagesService } from "../services/MessagesService";
@@ -78,7 +78,6 @@ io.on("connect", (socket) => {
     });
 
     socket.on("disconnect", async () => {
-        console.log(socket.id);
         await connectionsService.deleteBySocketId(socket.id);
     });
 });

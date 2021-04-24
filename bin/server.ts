@@ -1,17 +1,12 @@
-import http from 'http';
-import { Server } from "socket.io";
-
-import { app } from '../app/app';
+import { http, app } from '../app/app';
+import "../src/websocket/client";
+import "../src/websocket/admin";
 
 const port = normalizePort(process.env.PORT || '3000');
 
-const server = http.createServer(app);
-
-const io = new Server(server);
+const server = http;
 
 app.set('port', port);
-
-import "../src/websocket/client";
 
 server.listen(port);
 server.on('error', onError);
@@ -60,4 +55,4 @@ function onListening() {
         : 'port ' + addr.port;
 }
 
-export { io }
+export { server }

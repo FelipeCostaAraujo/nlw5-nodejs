@@ -1,4 +1,4 @@
-import { io } from "../../bin/socket";
+import { io } from "../../app/app";
 import { ConnectionsService } from "../services/ConnectionsService";
 import { MessagesService } from "../services/MessagesService";
 

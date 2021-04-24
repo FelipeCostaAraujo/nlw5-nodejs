@@ -3,8 +3,13 @@ import path from "path";
 import cors from 'cors';
 import "../src/database";
 import { routes } from '../src/routes';
+import { createServer } from 'http'
+import { Server, Socket } from "socket.io"
 
 const app = express();
+
+const http = createServer(app)
+const io = new Server(http)
 
 app.use(express.static(path.join(__dirname, "..", "public")));
 app.set("views", path.join(__dirname, "..", "public"));
@@ -23,4 +28,9 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-export { app };
+// io.on("connection", (socket: Socket) => {
+//     console.log("Se conectou", socket.id)
+// })
+
+
+export { http, app, io };
