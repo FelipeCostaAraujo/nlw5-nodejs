@@ -1,4 +1,5 @@
 import http from 'http';
+
 import { app } from '../app/app';
 
 const port = normalizePort(process.env.PORT || '3000');
@@ -6,6 +7,8 @@ const port = normalizePort(process.env.PORT || '3000');
 const server = http.createServer(app);
 
 app.set('port', port);
+
+import "../src/websocket/client";
 
 server.listen(port);
 server.on('error', onError);
@@ -53,3 +56,5 @@ function onListening() {
         ? 'pipe ' + addr
         : 'port ' + addr.port;
 }
+
+export { server }
