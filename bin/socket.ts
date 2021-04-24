@@ -1,9 +1,7 @@
-import { server } from "./server";
-import { Server, Socket } from "socket.io";
-
+import { io } from "./server";
+import { Socket } from "socket.io";
 import "../src/websocket/client";
-
-const io = new Server(server);
+import "../src/websocket/admin";
 
 io.on("connection", (socket: Socket) => {
     //console.log("Se conectou", socket.id);

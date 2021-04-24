@@ -1,10 +1,13 @@
 import http from 'http';
+import { Server } from "socket.io";
 
 import { app } from '../app/app';
 
 const port = normalizePort(process.env.PORT || '3000');
 
 const server = http.createServer(app);
+
+const io = new Server(server);
 
 app.set('port', port);
 
@@ -57,4 +60,4 @@ function onListening() {
         : 'port ' + addr.port;
 }
 
-export { server }
+export { io }

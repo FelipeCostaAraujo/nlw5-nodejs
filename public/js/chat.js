@@ -87,4 +87,6 @@ document
         });
 
         document.getElementById("messages").innerHTML += rendered;
+
+        document.getElementById("message_user").value = ""
     });

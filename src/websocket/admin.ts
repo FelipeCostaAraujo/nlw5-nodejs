@@ -26,12 +26,12 @@ io.on("connect", async (socket) => {
             admin_id: socket.id,
         });
 
-        // const { socket_id } = await connectionsService.findByUserId(user_id)
+        const { socket_id } = await connectionsService.findByUserId(user_id)
 
-        // io.to(socket_id).emit("admin_send_to_client", {
-        //   text,
-        //   socket_id: socket.id,
-        // });
+        io.to(socket_id).emit("admin_send_to_client", {
+            text,
+            socket_id: socket.id,
+        });
     });
 
     socket.on("admin_user_in_support", async (params) => {

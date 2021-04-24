@@ -64,17 +64,17 @@ io.on("connect", (socket) => {
 
         const socket_id = socket.id;
 
-        const user_id = await connectionsService.findBySocketID(socket_id);
+        const { user_id } = await connectionsService.findBySocketID(socket_id);
 
-        //   const message = await messagesService.create({
-        //     text,
-        //     user_id,
-        //   });
+        const message = await messagesService.create({
+            text,
+            user_id,
+        });
 
-        // io.to(socket_admin_id).emit("admin_receive_message", {
-        //     message,
-        //     socket_id,
-        // });
+        io.to(socket_admin_id).emit("admin_receive_message", {
+            message,
+            socket_id,
+        });
     });
 
     socket.on("disconnect", async () => {
